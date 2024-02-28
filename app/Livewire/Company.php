@@ -2,18 +2,22 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use App\Models\Companys;
 
 class Company extends Component
 {
-    public $name;
+    #[Validate('required|min:2')]
+        public $name;
     public $company = 'keine Firma';
 
-
+    
+    
 
     public function createNewCompany()
     {
+        $this->validate(); 
         $company = Companys::create([
             "name" => $this->name,
             'owner_id' => auth()->id()
