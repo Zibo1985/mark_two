@@ -25,8 +25,7 @@ class SearchUser extends Component
         } else {
             $item = [];
         }
-        //   $item = User::all();
-
+        
         return view('livewire.search-user', ['item' => $item]);
     }
 }
