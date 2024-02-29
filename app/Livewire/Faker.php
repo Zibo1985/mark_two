@@ -2,8 +2,8 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\Kunden;
+use Livewire\Component;
 
 
 class Faker extends Component
@@ -15,7 +15,7 @@ class Faker extends Component
     }
     public function render()
     {
-        dump();
+        
         $kunden = Kunden::all();
         return view(
             'livewire.components.faker',

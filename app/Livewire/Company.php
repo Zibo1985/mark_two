@@ -11,10 +11,8 @@ class Company extends Component
     #[Validate('required|min:2')]
         public $name;
     public $company = 'keine Firma';
-
+    public $kollegen = [];
     
-    
-
     public function createNewCompany()
     {
         $this->validate(); 
@@ -35,8 +33,9 @@ class Company extends Component
             return view('livewire.noCompany');
         } else {
             return view('livewire.company', [
-                'companys' => $this->company
-            ]);
+                'companys' => $this->company,
+                'kollegen' => $this->kollegen
+                        ]);
         }
     }
 }
