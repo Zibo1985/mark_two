@@ -15,6 +15,7 @@ class Faker extends Component
     }
     public function render()
     {
+        dump();
         $kunden = Kunden::all();
         return view(
             'livewire.components.faker',
