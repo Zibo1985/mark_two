@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Livewire;
+
 use Livewire\Component;
 use OpenAI\Laravel\Facades\OpenAI;
  
@@ -21,9 +24,11 @@ class ChatBot extends Component
  
     function ask()
     {
-        $this->answer = OpenAI::ask($this->question, function ($partial) {
-            $this->stream(to: 'answer', content: $partial); 
-        });
+        // $this->answer = OpenAI::
+        
+        // OpenAI::ask($this->question, function ($partial) {
+        //     $this->stream(to: 'answer', content: $partial); 
+        // });
     }
  
     public function render()
