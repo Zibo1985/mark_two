@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Kunden;
-use Database\Seeders\KundenSeeder;
 
 
 class Faker extends Component
