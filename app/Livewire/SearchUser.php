@@ -8,11 +8,15 @@ use App\Models\Kunden;
 
 class SearchUser extends Component
 {
+    public function __construct(public $kunden = new Kunden) {
+       
+    }
 
     public $vorname;
     public $nachname;
     public $firma;
     public $ort;
+    
     public function render()
     {
         if (
@@ -21,7 +25,7 @@ class SearchUser extends Component
             strlen($this->firma) >= 3 ||
             strlen($this->ort) >= 3
         ) {
-            $item = Kunden::search($this->vorname, $this->nachname, $this->firma, $this->ort);
+            $item = Kunden::search( $this->nachname);
         } else {
             $item = [];
         }

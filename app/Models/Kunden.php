@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Livewire\WithPagination;
-use Illuminate\Support\Facades\DB;
 
 class Kunden extends Model
 {
@@ -26,14 +24,10 @@ class Kunden extends Model
         'rtelefon'
     ];
 
-    protected static function search(string|Null $vorname, string|Null $nachname, string|Null $firma, string|Null $ort)
+    public static function search(string $nachname)
     {
-        return DB::table('kunden')
-            ->where('rvorname', 'like', '%' . $vorname . '%')
-            ->where('rname', 'like', '%' . $nachname . '%')
-            ->where('rfirma', 'like', '%' . $firma . '%')
-            ->where('rort', 'like', '%' . $ort . '%')
-            ->get()
-            ->toArray();
+        return (new static)::where(['rvorname' , 'rname' ], 'LIKE', ['%' .'franz' .'%' , '%'.'fra'.'%'],)
+           
+            ->get();
     }
 }

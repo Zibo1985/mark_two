@@ -6,15 +6,4 @@
     <p class="text-gray-500 dark:text-gray-400"> beschäftigt</p>
     @endforeach
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
-    <div>
-        <p class="text-gray-500 dark:text-gray-400">Kollegen</p>
-        <div>
-        @foreach ($kollegen as $kollege)
-            {{ $kollege }}
-        @endforeach
-        </div>
-
-    </div>
-
-
 </div>

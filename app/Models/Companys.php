@@ -9,16 +9,17 @@ use Illuminate\Support\Facades\DB;
 class Companys extends Model
 {
     use HasFactory;
+    
     protected $table = 'companys';
     protected $primaryKey = 'id';
     protected $fillable = [
         'name',
-        'owner_id',
+        'member',
     ];
-    public static function ownerOf(int|array $owner_id)
+    public $timestamps = false;
+    public static function memberOf(int|array $member)
     {
-        return DB::table('companys')
-            ->where('owner_id', '=', $owner_id)
+        return (new static)::where('member', '=', $member)
             ->get();
     }
 }

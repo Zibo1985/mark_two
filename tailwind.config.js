@@ -11,6 +11,13 @@ export default {
 
     theme: {
         extend: {
+            spacing: {
+                '128': '32rem',
+                '144': '36rem',
+              },
+              borderRadius: {
+                '4xl': '2rem',
+              },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },

@@ -109,7 +109,7 @@ return [
     |
     */
 
-    'faker_locale' => 'de',
+    'faker_locale' => 'DE_de',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+       
         /*
          * Application Service Providers...
          */

@@ -14,21 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::view('/', 'welcome');
-
-Route::view('dashboard', 'pages.dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('customer', 'pages.customer')
-    ->middleware(['auth', 'verified'])
-    ->name('customer');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-    
-Route::view('fakeData', 'pages.seeders')
-    ->middleware(['auth'])
-    ->name('fakeData');
-
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('dashboard', 'pages.dashboard')->name('dashboard');
+    Route::view('customer', 'pages.customer')->name('customer');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::view('profile', 'profile')->name('profile');
+    Route::view('fakeData', 'pages.seeders')->name('fakeData');
+});
+require __DIR__ . '/auth.php';
