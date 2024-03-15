@@ -30,15 +30,11 @@ class AppServiceProvider extends ServiceProvider
                     $query->sql = substr_replace($query->sql, $value, $position, 1);
                 }
             }
+            $queryResult = date('Y.m.d H:i:s') .PHP_EOL . '  ->  ' . $query->sql;
+
             File::append(
                 storage_path('/logs/query.log'),
-                sprintf(
-                    '[%s] %s [%s]%s%s',
-                    date('Y-m-d H:i:s'),
-                    $query->sql,
-                    0,
-                    PHP_EOL,PHP_EOL
-                )
+                $queryResult . PHP_EOL . PHP_EOL
             );
         });
     }
