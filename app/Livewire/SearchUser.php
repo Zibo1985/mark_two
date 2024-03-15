@@ -25,7 +25,7 @@ class SearchUser extends Component
             strlen($this->firma) >= 3 ||
             strlen($this->ort) >= 3
         ) {
-            $item = Kunden::search( $this->nachname);
+            $item = Kunden::search( $this->nachname, $this->vorname);
         } else {
             $item = [];
         }

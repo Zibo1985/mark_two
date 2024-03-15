@@ -23,11 +23,22 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         DB::listen(function ($query) {
+
+            foreach ($query->bindings as $value) {
+                $position = strpos($query->sql, '?');
+                if ($position !== false) {
+                    $query->sql = substr_replace($query->sql, $value, $position, 1);
+                }
+            }
             File::append(
-               
                 storage_path('/logs/query.log'),
-                sprintf('[%s] %s [%s]%s%s', date('Y-m-d H:i:s'), $query->sql, implode(', ', $query->bindings),
-                  PHP_EOL, PHP_EOL)
+                sprintf(
+                    '[%s] %s [%s]%s%s',
+                    date('Y-m-d H:i:s'),
+                    $query->sql,
+                    0,
+                    PHP_EOL,PHP_EOL
+                )
             );
         });
     }
