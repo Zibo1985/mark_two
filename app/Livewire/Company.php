@@ -2,18 +2,21 @@
 
 namespace App\Livewire;
 
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 use App\Models\Companys;
+use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Log;
 
 class Company extends Component
 {
+    
     #[Validate('required|min:2')]
     public $name;
     public $company = 'keine Firma';
     public int $id;
     public function createNewCompany()
     {
+        Log::debug('An informational message.');
         $this->validate();
         $company = Companys::create([
             "name" => $this->name,
@@ -22,10 +25,10 @@ class Company extends Component
 
         return $company;
     }
-    public function deleteCompany()
-    {
-        $companyToDelete = Companys::find($this->id);
-        $companyToDelete->delete();
+    public function deleteCompany($companyId)
+    {     
+        Log::debug($companyId);   
+        Companys::remove($companyId);
     }
     public function render()
     {
