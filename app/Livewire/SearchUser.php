@@ -8,10 +8,7 @@ use App\Models\Kunden;
 
 class SearchUser extends Component
 {
-    public function __construct(public $kunden = new Kunden) {
-       
-    }
-
+    public function __construct(public $kunden = new Kunden) {}
     public $vorname;
     public $nachname;
     public $firma;
