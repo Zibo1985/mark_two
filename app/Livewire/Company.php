@@ -9,25 +9,22 @@ use Illuminate\Support\Facades\Log;
 
 class Company extends Component
 {
-    
+
     #[Validate('required|min:2')]
     public $name;
     public $company = 'keine Firma';
-    public int $id;
     public function createNewCompany()
     {
-        Log::debug('An informational message.');
         $this->validate();
         $company = Companys::create([
             "name" => $this->name,
             'member' => auth()->id()
         ]);
-
+        unset($this->name);
         return $company;
     }
     public function deleteCompany($companyId)
-    {     
-        Log::debug($companyId);   
+    {
         Companys::remove($companyId);
     }
     public function render()

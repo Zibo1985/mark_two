@@ -21,8 +21,7 @@ class Companys extends Model
     public $timestamps = false;
     public static function memberOf(int|array $member)
     {
-        return (new static)
-        ::where('member', '=', $member)
+        return self::where('member', '=', $member)
         ->get();
     }
 

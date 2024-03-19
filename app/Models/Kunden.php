@@ -24,10 +24,12 @@ class Kunden extends Model
         'rtelefon'
     ];
 
-    public static function search($nachname = ' ', $vorname = ' ', )
+    public static function search(string|NULL $nachname = ' ',string|NULL $vorname = ' ',string|NULL $firma = " ",string|NULL $ort = " ")
     {
-        return (new static)::where('rname' ,'like' , '%' . $nachname . '%')
+        return self::where('rname' ,'like' , '%' . $nachname . '%')
            ->where('rvorname', 'like' ,  '%' . $vorname . '%')
+           ->where('rfirma', 'like', '%' . $firma . '%')
+           ->where('rort' ,'like', '%' . $ort . '%')
             ->get();
     }
 }
